@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8" />
+    <title>Pyblocks</title>
+        <style>
+            html, body, #blocklyDiv {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+            }
+            #saveBtn,
+            #exportPyblxBtn,
+            #rendererSelect {
+            background-color: #333;  /* dark background */
+            color: #eee;             /* light text */
+            border: 1px solid #555;  /* subtle border */
+            border-radius: 5px;
+            padding: 6px 12px;
+            font-weight: 600;
+            font-family: sans-serif;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            }
+
+            #saveBtn:hover,
+            #exportPyblxBtn:hover,
+            #rendererSelect:hover {
+            background-color: #444;
+            }
+
+            #importPyblxInput {
+            filter: invert(1) hue-rotate(180deg); /* quick hack to darken file input */
+            }
+
+            /* Optional: remove default blue outline on focus but add a custom one */
+            #saveBtn:focus,
+            #exportPyblxBtn:focus,
+            #rendererSelect:focus {
+            outline: none;
+            box-shadow: 0 0 3px 2px #5cb1d6;
+            }
+            #customFileBtn {
+            background-color: #333;
+            color: #eee;
+            border: 1px solid #555;
+            border-radius: 5px;
+            padding: 6px 12px;
+            cursor: pointer;
+            font-weight: 600;
+            font-family: sans-serif;
+            position: fixed;
+            top: 10px;
+            font-size: 18px;
+            right: 410px;
+            z-index: 999;
+            display: inline-block;
+            text-align: center;
+            user-select: none;
+            transition: background-color 0.2s ease;
+            }
+            #customFileBtn:hover {
+            background-color: #444;
+            }
+        </style>
+    </head>
+  <body>
+    <div id="blocklyDiv"></div>
+    <button id="saveBtn" style="position: fixed; top: 10px; right: 120px; z-index: 999;">
+      Save Python
+    </button>
+    <input type="file" id="importPyblxInput" accept=".pyblx,.xml" style="position: fixed; top: 120px; right: -10000px; z-index: 999;" />
+    <label for="importPyblxInput" id="customFileBtn">Import .pyblx</label>
+    <button id="exportPyblxBtn" style="position: fixed; top: 10px; right: 262px; z-index: 999;">
+        Export .pyblx
+    </button>
+    <select id="rendererSelect" style="position: fixed; top: 10px; right: 10px; z-index: 999;">
+        <option value="zelos">Zelos</option>
+        <option value="geras">Geras</option>
+    </select>
+    <xml id="toolbox" style="display: none">
+      <category name="Control" colour="#ffab19">
+        <block type="controls_if"></block>
+        <block type="logic_compare"></block>
+        <block type="logic_binary"></block>
+        <block type="logic_not"></block>
+        <block type="custom_for_loop"></block>
+        <block type="custom_while_loop"></block>
+        <block type="loop_continue"></block>
+        <block type="loop_break"></block>
+        <block type="boolean_input"></block>
+        <!-- <block type=""></block> -->
+        <!-- <block type=""></block> -->
+      </category>
+      <category name="Math" colour="#59c059">
+        <block type="math_number"></block>
+        <block type="math_operator"></block>
+        <block type="math_unary"></block>
+        <block type="math_random_range"></block>
+        <block type="math_round_places"></block>
+        <block type="math_convert"></block>
+      </category>
+      <category name="Variables" colour="#ff8c1a" custom="VARIABLE"></category>
+      <category name="Text" colour="#5cb1d6">
+        <block type="print"></block>
+        <block type="input"></block>
+        <block type="custom_text"></block>
+        <block type="comment"></block>
+      </category>
+    </xml>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
